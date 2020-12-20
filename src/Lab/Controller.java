@@ -1,10 +1,19 @@
 package Lab;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.*;
+import javafx.event.*;
+import javafx.fxml.FXML;
+
 import java.util.*;
 import java.io.*;
 import java.net.*;
@@ -267,7 +276,71 @@ public class Controller implements Initializable {
         ele_elid.setText("");
     }
 
-    public void check_1(ActionEvent actionEvent) {
-
+    public void check_1(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+        elec_file.readFile(elec_file.electivecourses);
+        cou_file.readFile(cou_file.courses);
+        schedules_file.readFile(schedules_file.schedules);
+        teachers_file.readFile(teachers_file.teachers);
+        TableInfo[] tableInfos = new TableInfo[5];
+        ObservableList<TableInfo> data = FXCollections.observableArrayList(
+                tableInfos[0],tableInfos[1],tableInfos[2],tableInfos[3],tableInfos[4]
+        );
+        cname_column.setCellValueFactory(
+                new PropertyValueFactory<>("Course Name")
+        );
+        tname_column.setCellValueFactory(
+                new PropertyValueFactory<>("Teacher")
+        );
+        classroom_column.setCellValueFactory(
+                new PropertyValueFactory<>("Classroom")
+        );
+        String sid = find_sid_1.getText();
+        for(int i = 0; i < 5; i++) {
+            if(sid.compareTo(elec_file.electivecourses[i].getSid()) == 0 ) {
+                for(int j = 0; j < 5; j++) {
+                    if(elec_file.electivecourses[i].getClassid().compareTo(schedules_file.schedules[j].getClassid()) == 0) {
+                        tableInfos[i].setClassroom(schedules_file.schedules[j].getClassroom());
+                    }
+                    for(int k = 0; k < 5; k++) {
+                        if(schedules_file.schedules[j].getCid().compareTo(cou_file.courses[k].getCid()) == 0) {
+                            tableInfos[i].setCname(cou_file.courses[k].getCname());
+                        }
+                    }
+                    for(int k = 0; k < 5; k++ ) {
+                        if(schedules_file.schedules[j].getTid().compareTo(teachers_file.teachers[k].getTid()) == 0) {
+                            tableInfos[i].setTname(teachers_file.teachers[k].getName());
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+class TableInfo {
+    SimpleStringProperty cname;
+    SimpleStringProperty tname;
+    SimpleStringProperty classroom;
+    TableInfo(String cname, String tname, String classroom) {
+        this.cname = new SimpleStringProperty(cname);
+        this.tname = new SimpleStringProperty(tname);
+        this.classroom = new SimpleStringProperty(classroom);
+    }
+    public String getCname() {
+        return cname.get();
+    }
+    public void setCname(String courseName) {
+        cname.set(courseName);
+    }
+    public String getTname() {
+        return tname.get();
+    }
+    public void setTname(String teacherName) {
+        cname.set(teacherName);
+    }
+    public String getClassroom() {
+        return classroom.get();
+    }
+    public void setClassroom(String Classroom) {
+        cname.set(Classroom);
     }
 }
