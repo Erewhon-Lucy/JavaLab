@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -22,11 +25,23 @@
                                         <TextField fx:id="stu_major" onAction="#setStu_major" prefHeight="30.0" prefWidth="160.0" promptText="major" />
                                     </children>
                                 </TextFlow>
-                                <Text layoutX="211.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="add student's information" textOrigin="CENTER" />
-                                <Button fx:id="stu_continue" layoutX="262.0" layoutY="287.0" mnemonicParsing="false" onAction="#setStu_continue" text="confirm" textFill="#b52e2e" AnchorPane.bottomAnchor="53.00000000000002" AnchorPane.topAnchor="279.0">
+                                <Text layoutX="173.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add student's information" textOrigin="CENTER" wrappingWidth="254.5146484375">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#000000bf" />
+                           </effect></Text>
+                                <Button fx:id="stu_continue" layoutX="262.0" layoutY="289.0" mnemonicParsing="false" onAction="#setStu_continue" text="confirm" textFill="#054ea7" AnchorPane.bottomAnchor="43.0" AnchorPane.topAnchor="289.0">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
-                                    </font></Button>
+                                    </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Reflection topOpacity="0.3" />
+                           </effect></Button>
                             </children>
                         </AnchorPane>
                     </content>
@@ -44,11 +59,20 @@
                                         <TextField fx:id="tea_title" prefHeight="30.0" prefWidth="160.0" promptText="title" />
                                     </children>
                                 </TextFlow>
-                                <Text layoutX="212.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="add teacher's information" textOrigin="CENTER" />
-                                <Button fx:id="tea_continue" layoutX="262.0" layoutY="287.0" mnemonicParsing="false" onAction="#setTea_continue" style="-fx-border-radius: 2em;" text="confirm" textFill="#9c0000" AnchorPane.bottomAnchor="53.00000000000002" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="262.8" AnchorPane.topAnchor="279.0">
+                                <Text layoutX="175.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add teacher's information" textOrigin="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#000000bf" />
+                           </effect></Text>
+                                <Button fx:id="tea_continue" layoutX="262.0" layoutY="289.0" mnemonicParsing="false" onAction="#setTea_continue" style="-fx-border-radius: 2em;" text="confirm" textFill="#054ea7" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="262.8" AnchorPane.topAnchor="289.0">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
-                                    </font></Button>
+                                    </font>
+                           <effect>
+                              <Reflection topOpacity="0.2" />
+                           </effect></Button>
                             </children>
                         </AnchorPane>
                     </content>
@@ -64,11 +88,20 @@
                                         <TextField fx:id="cou_chour" prefHeight="30.0" prefWidth="160.0" promptText="chour" />
                                     </children>
                                 </TextFlow>
-                                <Text layoutX="215.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="add course information" />
-                                <Button fx:id="cou_continue" layoutX="262.0" layoutY="281.0" mnemonicParsing="false" onAction="#setCou_continue" text="confirm" textFill="#9c0000" AnchorPane.topAnchor="279.0">
+                                <Text layoutX="186.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add course information">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#000000bf" />
+                           </effect></Text>
+                                <Button fx:id="cou_continue" layoutX="262.0" layoutY="281.0" mnemonicParsing="false" onAction="#setCou_continue" text="confirm" textFill="#054ea7" AnchorPane.topAnchor="279.0">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
-                                    </font></Button>
+                                    </font>
+                           <effect>
+                              <Reflection topOpacity="0.3" />
+                           </effect></Button>
                             </children>
                         </AnchorPane>
                     </content>
@@ -85,11 +118,20 @@
                                         <TextField fx:id="sch_classroom" prefHeight="30.0" prefWidth="160.0" promptText="classroom" />
                                     </children>
                                 </TextFlow>
-                                <Text layoutX="252.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="add schedule" textOrigin="CENTER" />
-                                <Button fx:id="sch_continue" layoutX="264.0" layoutY="291.0" mnemonicParsing="false" onAction="#setSch_continue" text="confirm" textFill="#9c0000" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="279.0">
+                                <Text layoutX="176.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add schedule information" textOrigin="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#000000bf" />
+                           </effect></Text>
+                                <Button fx:id="sch_continue" layoutX="264.0" layoutY="291.0" mnemonicParsing="false" onAction="#setSch_continue" text="confirm" textFill="#054ea7" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="279.0">
                                     <font>
                                         <Font name="System Bold Italic" size="14.0" />
-                                    </font></Button>
+                                    </font>
+                           <effect>
+                              <Reflection topOpacity="0.3" />
+                           </effect></Button>
                             </children>
                         </AnchorPane>
                     </content>
@@ -105,16 +147,25 @@
                                         <TextField fx:id="ele_classid" prefHeight="30.0" prefWidth="160.0" promptText="classid" />
                                     </children>
                                 </TextFlow>
-                                <Text layoutX="186.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="add elective course information" />
-                                <Button fx:id="ele_continue" layoutX="262.0" layoutY="291.0" mnemonicParsing="false" onAction="#setEle_continue" text="confirm" textFill="#9c0000" AnchorPane.topAnchor="279.0">
+                                <Text layoutX="147.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add elective course information">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#000000bf" />
+                           </effect></Text>
+                                <Button fx:id="ele_continue" layoutX="262.0" layoutY="291.0" mnemonicParsing="false" onAction="#setEle_continue" text="confirm" textFill="#054ea7" AnchorPane.topAnchor="279.0">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
-                                    </font></Button>
+                                    </font>
+                           <effect>
+                              <Reflection topOpacity="0.3" />
+                           </effect></Button>
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="search_table" text="Search">
+                <Tab fx:id="search_table" text="Search Information">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -124,10 +175,19 @@
                                         <TableColumn fx:id="tname_column" prefWidth="155.0" text="Teacher Name" />
                                         <TableColumn fx:id="classroom_column" prefWidth="142.0" text="Classroom" />
                                     </columns>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                                 </TableView>
                                 <Text layoutX="88.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student id to search" />
-                                <TextField fx:id="find_sid_1" layoutX="252.0" layoutY="21.0" prefHeight="30.0" prefWidth="174.0" />
-                                <Button fx:id="check_button_1" layoutX="443.0" layoutY="21.0" mnemonicParsing="false" onAction="#check_1" text="Search" />
+                                <TextField fx:id="find_sid_1" layoutX="252.0" layoutY="21.0" prefHeight="30.0" prefWidth="174.0" promptText="sid">
+                           <effect>
+                              <InnerShadow color="#2a52db" />
+                           </effect></TextField>
+                                <Button fx:id="check_button_1" layoutX="443.0" layoutY="21.0" mnemonicParsing="false" onAction="#check_1" text="Search" textFill="#054ea7">
+                           <effect>
+                              <DropShadow />
+                           </effect></Button>
                             </children>
                         </AnchorPane>
                     </content>
