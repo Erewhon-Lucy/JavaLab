@@ -1,3 +1,8 @@
+/**
+ * 控制器类
+ * 能够运行的原因是继承自CLIMain，但不要运行
+ */
+
 package Lab;
 
 import javafx.collections.FXCollections;
@@ -6,8 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class Controller extends CLIMain {
     public TextField stu_name;

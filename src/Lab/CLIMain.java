@@ -1,3 +1,8 @@
+/**
+ * 1.若在命令行展示读写文件操作，则直接运行即可
+ * 2.若要用GUI演示，则必须打开此文件
+ */
+
 package Lab;
 
 import javafx.collections.ObservableList;
@@ -7,11 +12,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class CLIMain {
-    MyFile myfile2 = new MyFile("student.data");
-    MyFile myfile3 = new MyFile("teacher.data");
-    MyFile myfile4 = new MyFile("course.data");
-    MyFile myfile5 = new MyFile("schedule.data");
-    MyFile myfile6 = new MyFile("electivecourse.data");
+    MyFile myfile2 = new MyFile("student.txt");
+    MyFile myfile3 = new MyFile("teacher.txt");
+    MyFile myfile4 = new MyFile("course.txt");
+    MyFile myfile5 = new MyFile("schedule.txt");
+    MyFile myfile6 = new MyFile("electivecourse.txt");
     Student[] StudentList;
     Teacher[] TeacherList;
     Course[] CourseList;
@@ -27,7 +32,7 @@ public class CLIMain {
             int i1 = -1;
             String[] guidatalist;
 
-            //将输入的内容按逗号分隔开
+
             guidatalist = guidata.split(",");
             switch (guidatatype) {
                 case 1:
@@ -54,23 +59,23 @@ public class CLIMain {
 
             switch (guidatatype) {
                 case 1:
-                    MyFile myfile2 = new MyFile("student.data");
+                    MyFile myfile2 = new MyFile("student.txt");
                     Student s1 = new Student(p1, p2, p3, i1, p4);
                     myfile2.writeFile(s1);break;
                 case 2:
-                    MyFile myfile3 = new MyFile("teacher.data");
+                    MyFile myfile3 = new MyFile("teacher.txt");
                     Teacher t1 = new Teacher(p1,p2, p3, i1, p4);
                     myfile3.writeFile(t1);break;
                 case 3:
-                    MyFile myfile4 = new MyFile("course.data");
+                    MyFile myfile4 = new MyFile("course.txt");
                     Course c1 = new Course(p1, p2, i1);
                     myfile4.writeFile(c1);break;
                 case 4:
-                    MyFile myfile5 = new MyFile("schedule.data");
+                    MyFile myfile5 = new MyFile("schedule.txt");
                     Schedule sc1 = new Schedule(p1, p2, p3, p4);
                     myfile5.writeFile(sc1);break;
                 case 5:
-                    MyFile myfile6 = new MyFile("electivecourse.data");
+                    MyFile myfile6 = new MyFile("electivecourse.txt");
                     Electivecourse e1 = new Electivecourse(p1, p2, p3);
                     myfile6.writeFile(e1);break;
                 default:
@@ -161,7 +166,7 @@ public class CLIMain {
         }
 
         int i = 0;
-        //从Elect中选出该学生所有选课记录
+
         for (Electivecourse ele:
                 ElectivecourseList) {
             if(ele == null) {
@@ -171,7 +176,7 @@ public class CLIMain {
             }
         }
         i = 0;
-        //用ElectList的classid值选出所有符合条件的schedule
+
         for (Electivecourse ele:
                 ElectRecord) {
             if(ele != null) {
@@ -188,7 +193,7 @@ public class CLIMain {
             }
         }
         i = 0;
-        //用schedule的cid值选出所有符合条件的course
+
         for (Schedule sch:
                 ScheRecord) {
             if(sch != null) {
@@ -205,7 +210,7 @@ public class CLIMain {
             }
         }
         i = 0;
-        for (Schedule sch://用schedule的tid值选出所有符合条件的teacher
+        for (Schedule sch:
                 ScheRecord) {
             if(sch != null) {
                 for (Teacher teach:
@@ -221,7 +226,6 @@ public class CLIMain {
             }
         }
 
-        //信息输出部分
         for (i = 0; i < 100; i++) {
             if (ElectRecord[i] != null && ScheRecord[i] != null
                     && CourRecord[i] != null && TeachRecord[i] != null) {
@@ -236,9 +240,11 @@ public class CLIMain {
         CLIMain climain = new CLIMain();
         while (true) {
             int choice = 0;
-            System.out.printf("\n\nWelcome to Course-Schedule Manage System");
-            System.out.printf("Please input the index you want:\n1.Write data\n2.Read from exist files\n" +
-                    "3.Search Student Course Infomation By Student's sid\nYour Choice:");
+            System.out.println("");
+            System.out.println("Choose function:");
+            System.out.println("1.Write data");
+            System.out.println("2.Read from file");
+            System.out.println("3.Search information by sid");
             Scanner scan = new Scanner(System.in);
             choice = scan.nextInt();
             System.out.println("");
@@ -252,7 +258,7 @@ public class CLIMain {
                             && climain.ScheduleList != null && climain.ElectivecourseList != null) {
                         climain.SearchInfoBySid("sid1",null);
                     }else {
-                        System.out.println("Please fullfill or read the file first!");
+                        System.out.println("Check your file, please.");
                     }
             }
         }

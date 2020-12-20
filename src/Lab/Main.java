@@ -1,3 +1,8 @@
+/**
+ * 运行GUI应用
+ * 需提前运行CLIMain
+ */
+
 package Lab;
 
 import javafx.application.Application;

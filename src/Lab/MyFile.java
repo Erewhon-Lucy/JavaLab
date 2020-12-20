@@ -1,10 +1,11 @@
+/**
+ * 文件类
+ */
+
 package Lab;
 
 import java.io.*;
 
-/**
- * 文件类
- */
 public class MyFile {
 
     private static final long serialVersionUID = 1L;

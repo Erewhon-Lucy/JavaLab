@@ -1,12 +1,13 @@
+/**
+ * 创建几个测试用的例子写入文件中，命令行返回录入信息
+ */
+
 package Lab;
 
-/**
- * 文件的测试类
- */
 public class TestMyFile {
     public static void main(String[] args) throws Exception {
         int arraylength1 = 3;
-        MyFile myfile1 = new MyFile("person.data");
+        MyFile myfile1 = new MyFile("person.txt");
         Person p1 = new Person("person1", "male", 1);
         Person p2 = new Person("person2", "female", 2);
         Person p3 = new Person("person3", "universal", 3);
@@ -25,10 +26,10 @@ public class TestMyFile {
         }
 
         int arraylength2 = 3;
-        MyFile myfile2 = new MyFile("student.data");
-        Student s1 = new Student("sid1", "stu1","male", 1,"major1");
-        Student s2 = new Student("sid2","stu2", "female", 2,"mmajor2");
-        Student s3 = new Student("sid3","stu3", "universal", 3,"major3");
+        MyFile myfile2 = new MyFile("student.txt");
+        Student s1 = new Student("sid1","student1", "m", 21,"major1");
+        Student s2 = new Student("sid2","student2", "f", 22,"major2");
+        Student s3 = new Student("sid3","student3", "m", 23,"major3");
         myfile2.writeFile(s1);
         myfile2.writeFile(s2);
         myfile2.writeFile(s3);
@@ -44,10 +45,10 @@ public class TestMyFile {
         }
 
         int arraylength3 = 3;
-        MyFile myfile3 = new MyFile("teacher.data");
-        Teacher t1 = new Teacher("tid1","teacher1", "male", 1,"title1");
-        Teacher t2 = new Teacher("tid2","teacher2", "female", 2,"titlle2");
-        Teacher t3 = new Teacher("tid3","teacher3", "universal", 3,"tttle3");
+        MyFile myfile3 = new MyFile("teacher.txt");
+        Teacher t1 = new Teacher("tid1","teacher1", "m", 41,"title1");
+        Teacher t2 = new Teacher("tid2","teacher2", "f", 42,"title2");
+        Teacher t3 = new Teacher("tid3","teacher3", "m", 43,"title3");
         myfile3.writeFile(t1);
         myfile3.writeFile(t2);
         myfile3.writeFile(t3);
@@ -63,10 +64,10 @@ public class TestMyFile {
         }
 
         int arraylength4 = 3;
-        MyFile myfile4 = new MyFile("course.data");
-        Course c1 = new Course("cid1", "cname1", 1);
-        Course c2 = new Course("cid2", "cnama2", 2);
-        Course c3 = new Course("cid3", "cname3", 3);
+        MyFile myfile4 = new MyFile("course.txt");
+        Course c1 = new Course("cid1", "cname1", 61);
+        Course c2 = new Course("cid2", "cname2", 62);
+        Course c3 = new Course("cid3", "cname3", 63);
         myfile4.writeFile(c1);
         myfile4.writeFile(c2);
         myfile4.writeFile(c3);
@@ -82,10 +83,10 @@ public class TestMyFile {
         }
 
         int arraylength5 = 3;
-        MyFile myfile5 = new MyFile("schedule.data");
-        Schedule sc1 = new Schedule("classid1", "cid1", "11","classroom1");
-        Schedule sc2 = new Schedule("classid2", "cid2", "22","classroom2");
-        Schedule sc3 = new Schedule("classid3", "cid3", "33","classroom3");
+        MyFile myfile5 = new MyFile("schedule.txt");
+        Schedule sc1 = new Schedule("classid1", "cid1", "tid1","classroom1");
+        Schedule sc2 = new Schedule("classid2", "cid2", "tid2","classroom2");
+        Schedule sc3 = new Schedule("classid3", "cid3", "tid3","classroom3");
         myfile5.writeFile(sc1);
         myfile5.writeFile(sc2);
         myfile5.writeFile(sc3);
@@ -101,7 +102,7 @@ public class TestMyFile {
         }
 
         int arraylength6 = 3;
-        MyFile myfile6 = new MyFile("electivecourse.data");
+        MyFile myfile6 = new MyFile("electivecourse.txt");
         Electivecourse e1 = new Electivecourse("elid1", "sid1", "classid1");
         Electivecourse e2 = new Electivecourse("elid2", "sid2", "classid2");
         Electivecourse e3 = new Electivecourse("elid3", "sid3", "classid3");
