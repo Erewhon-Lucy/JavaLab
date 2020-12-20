@@ -1,206 +1,186 @@
 package Lab;
 
 import java.io.*;
-import java.util.Scanner;
 
-class MyObjectOutputStream extends ObjectOutputStream {
+/**
+ * 文件类
+ */
+public class MyFile {
 
-    protected void writeStreamHeader() throws IOException {
+    private static final long serialVersionUID = 1L;
+
+    private File opfile;
+
+    public File getOpFile() {
+        return opfile;
     }
 
-    public MyObjectOutputStream(OutputStream out) throws IOException {
-        super(out);
-    }
-}
-
-class MyFile implements Serializable {
-    File opfile = new File(".");
-    protected Person[] people = new Person[10];
-    Student[] students = new Student[10];
-    Teacher[] teachers = new Teacher[10];
-    Course[] courses = new Course[10];
-    Schedule[] schedules = new Schedule[10];
-    Electivecourse[] electivecourses = new Electivecourse[10];
-
-    MyFile(File file) throws IOException {
-        this.opfile = file;
-        if (!file.exists()) {
-            String s;
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("DO YOU WANT TO STORY IT? Y / N");
-            s = scanner.nextLine();
-            if (s.equals("N"))
-                opfile.createNewFile();
-            if (opfile.exists())
-                System.out.println("Create successfully");
+    public MyFile(String FileName) throws IOException {
+        this.opfile = new File(FileName);
+        //如果文件不存在则创建
+        if (!opfile.exists()) {
+            opfile.createNewFile();
+        }
+        //文件不可读
+        if (!opfile.canRead()) {
+            System.out.println("file can't be read.");
         }
     }
 
-    void readFile(Person[] people) throws IOException, ClassNotFoundException {
-        int i = 0;
-        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(opfile));
-        Person person;
+    public void writeFile(Person person) throws Exception {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(this.opfile,true))) {
+            os.writeObject(person);
+            System.out.println("Successfully write person.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeFile(Student student) throws Exception {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(this.opfile,true))) {
+            os.writeObject(student);
+            System.out.println("Successfully write student.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeFile(Teacher teacher) throws Exception {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(this.opfile,true))) {
+            os.writeObject(teacher);
+            System.out.println("Successfully write teacher.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeFile(Course course) throws Exception {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(this.opfile,true))) {
+            os.writeObject(course);
+            System.out.println("Successfully write course.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeFile(Schedule schedule) throws Exception {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(this.opfile,true))) {
+            os.writeObject(schedule);
+            System.out.println("Successfully write schedule.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeFile(Electivecourse electiveCourse) throws Exception {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(this.opfile,true))) {
+            os.writeObject(electiveCourse);
+            System.out.println("Successfully write electiveCourse.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void readFile(Person[] PersonList) throws Exception {
         try {
-            while (true) {
-                person = (Person) objectInputStream.readObject();
-                person.display();
-                people[i++] = person;
+            FileInputStream in = new FileInputStream(this.opfile);
+            ObjectInputStream ois = null;
+            int i = 0;
+            while(in.available() > 0) {
+                ois = new ObjectInputStream(in);
+                PersonList[i++] = (Person)ois.readObject();
             }
-        } catch (EOFException e) {
-            System.out.println("People read finish");
+            ois.close();
+            System.out.println("Successfully read person.");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
-    void readFile(Student[] students) throws IOException, ClassNotFoundException {
-        int i = 0;
-        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(opfile));
-        Student student;
+    public void readFile(Student[] StudentList) throws Exception {
         try {
-            while (true) {
-                student = (Student) objectInputStream.readObject();
-                student.display();
-                students[i++] = student;
+            FileInputStream in = new FileInputStream(this.opfile);
+            ObjectInputStream ois = null;
+            int i = 0;
+            while(in.available() > 0) {
+                ois = new ObjectInputStream(in);
+                StudentList[i++] = (Student)ois.readObject();
             }
-        } catch (EOFException e) {
-            System.out.println("Students read finish");
+            ois.close();
+            System.out.println("Successfully read student.");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
-    void readFile(Teacher[] teachers) throws IOException, ClassNotFoundException {
-        int i = 0;
-        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(opfile));
-        Teacher teacher;
+    public void readFile(Teacher[] TeacherList) throws Exception {
         try {
-            while (true) {
-                teacher = (Teacher) objectInputStream.readObject();
-                teacher.display();
-                teachers[i++] = teacher;
+            FileInputStream in = new FileInputStream(this.opfile);
+            ObjectInputStream ois = null;
+            int i = 0;
+            while(in.available() > 0) {
+                ois = new ObjectInputStream(in);
+                TeacherList[i++] = (Teacher)ois.readObject();
             }
-        } catch (EOFException e) {
-            System.out.println("Teachers read finish");
+            ois.close();
+            System.out.println("Successfully read teacher.");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
-    void readFile(Course[] courses) throws IOException, ClassNotFoundException {
-        int i = 0;
-        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(opfile));
-        Course course;
+    public void readFile(Course[] CourseList) throws Exception {
         try {
-            while (true) {
-                course = (Course) objectInputStream.readObject();
-                course.display();
-                courses[i++] = course;
+            FileInputStream in = new FileInputStream(this.opfile);
+            ObjectInputStream ois = null;
+            int i = 0;
+            while(in.available() > 0) {
+                ois = new ObjectInputStream(in);
+                CourseList[i++] = (Course)ois.readObject();
             }
-        } catch (EOFException e) {
-            System.out.println("Courses read finish");
+            ois.close();
+            System.out.println("Successfully read course.");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
-    void readFile(Schedule[] schedules) throws IOException, ClassNotFoundException {
-        int i = 0;
-        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(opfile));
-        Schedule schedule;
+    public void readFile(Schedule[] ScheduleList) throws Exception {
         try {
-            while (true) {
-                schedule = (Schedule) objectInputStream.readObject();
-                schedule.display();
-                schedules[i++] = schedule;
+            FileInputStream in = new FileInputStream(this.opfile);
+            ObjectInputStream ois = null;
+            int i = 0;
+            while(in.available() > 0) {
+                ois = new ObjectInputStream(in);
+                ScheduleList[i++] = (Schedule)ois.readObject();
             }
-        } catch (EOFException e) {
-            System.out.println("Schedules read finish");
+            ois.close();
+            System.out.println("Successfully read schedule.");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
-    void readFile(Electivecourse[] electivecourses) throws IOException, ClassNotFoundException {
-        int i = 0;
-        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(opfile));
-        Electivecourse electivecourse;
+    public void readFile(Electivecourse[] ElectivecourseList) throws Exception {
         try {
-            while (true) {
-                electivecourse = (Electivecourse) objectInputStream.readObject();
-                electivecourse.display();
-                electivecourses[i++] = electivecourse;
+            FileInputStream in = new FileInputStream(this.opfile);
+            ObjectInputStream ois = null;
+            int i = 0;
+            while(in.available() > 0) {
+                ois = new ObjectInputStream(in);
+                ElectivecourseList[i++] = (Electivecourse)ois.readObject();
             }
-        } catch (EOFException e) {
-            System.out.println("Electivecourses read finish");
+            ois.close();
+            System.out.println("Successfully read electiveCourse.");
         }
-    }
-
-    void WriteFile(Person person) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(opfile, true);
-        if (opfile.length() < 1) {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(person);
-            objectOutputStream.close();
-        } else {
-            MyObjectOutputStream myObjectOutputStream = new MyObjectOutputStream(fileOutputStream);
-            myObjectOutputStream.writeObject(person);
-            myObjectOutputStream.close();
-        }
-    }
-
-    void WriteFile(Student student) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(opfile, true);
-        if (opfile.length() < 1) {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(student);
-            objectOutputStream.close();
-        } else {
-            MyObjectOutputStream myObjectOutputStream = new MyObjectOutputStream(fileOutputStream);
-            myObjectOutputStream.writeObject(student);
-            myObjectOutputStream.close();
-        }
-    }
-
-    public void WriteFile(Teacher teacher) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(opfile, true);
-        if (opfile.length() < 1) {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(teacher);
-            objectOutputStream.close();
-        } else {
-            MyObjectOutputStream myObjectOutputStream = new MyObjectOutputStream(fileOutputStream);
-            myObjectOutputStream.writeObject(teacher);
-            myObjectOutputStream.close();
-        }
-    }
-
-    public void WriteFile(Course course) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(opfile, true);
-        if (opfile.length() < 1) {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(course);
-            objectOutputStream.close();
-        } else {
-            MyObjectOutputStream myObjectOutputStream = new MyObjectOutputStream(fileOutputStream);
-            myObjectOutputStream.writeObject(course);
-            myObjectOutputStream.close();
-        }
-    }
-
-    public void WriteFile(Schedule schedule) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(opfile, true);
-        if (opfile.length() < 1) {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(schedule);
-            objectOutputStream.close();
-        } else {
-            MyObjectOutputStream myObjectOutputStream = new MyObjectOutputStream(fileOutputStream);
-            myObjectOutputStream.writeObject(schedule);
-            myObjectOutputStream.close();
-        }
-    }
-
-    public void WriteFile(Electivecourse electivecourse) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(opfile, true);
-        if (opfile.length() < 1) {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(electivecourse);
-            objectOutputStream.close();
-        } else {
-            MyObjectOutputStream myObjectOutputStream = new MyObjectOutputStream(fileOutputStream);
-            myObjectOutputStream.writeObject(electivecourse);
-            myObjectOutputStream.close();
+        catch(Exception e) {
+            e.printStackTrace();
         }
     }
 }

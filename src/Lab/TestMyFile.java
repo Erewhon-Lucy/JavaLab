@@ -1,294 +1,122 @@
 package Lab;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
+/**
+ * 文件的测试类
+ */
 public class TestMyFile {
-    protected static int length = 1;
-
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        MyFile people_file = new MyFile(new File("People.txt"));
-        WritePerson(people_file);
-        people_file.readFile(people_file.people);
-
-        MyFile studnets_file = new MyFile(new File("Students.txt"));
-        WriteStudent(studnets_file);
-        studnets_file.readFile(studnets_file.students);
-
-        MyFile teachers_file = new MyFile(new File("Teachers.txt"));
-        WriteTeachers(teachers_file);
-        teachers_file.readFile(teachers_file.teachers);
-
-        MyFile courses_file = new MyFile(new File("Courses.txt"));
-        WriteCourses(courses_file);
-        courses_file.readFile(courses_file.courses);
-
-        MyFile schedule_file = new MyFile(new File("Schedule.txt"));
-        WriteSchedlue(schedule_file);
-        schedule_file.readFile(schedule_file.schedules);
-
-        MyFile elec_file = new MyFile(new File("elec.txt"));
-        WriteElec(elec_file);
-        elec_file.readFile(elec_file.electivecourses);
-
-        System.out.println("Please enter sid");
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String sid = bufferedReader.readLine();
-        for (int i = 0; i < 5; i++) {
-            if (sid.compareTo(elec_file.electivecourses[i].getSid()) == 0) {
-                for (int j = 0; j < 5; j++) {
-                    if (elec_file.electivecourses[i].getClassid().compareTo(schedule_file.schedules[j].getClassid()) == 0) {
-                        System.out.println("classroom is " + schedule_file.schedules[j].getClassroom());
-                        for (int k = 0; k < 5; k++) {
-                            if (schedule_file.schedules[j].getCid().compareTo(courses_file.courses[k].getCid()) == 0 && schedule_file.schedules[j].getTid().compareTo(teachers_file.teachers[k].getTid()) == 0) {
-                                System.out.println("course name is " + courses_file.courses[k].getCname());
-                                System.out.println("teacher's name is " + teachers_file.teachers[k].getName());
-                            }
-                        }
-                    }
-                }
+    public static void main(String[] args) throws Exception {
+        int arraylength1 = 3;
+        MyFile myfile1 = new MyFile("person.data");
+        Person p1 = new Person("person1", "male", 1);
+        Person p2 = new Person("person2", "female", 2);
+        Person p3 = new Person("person3", "universal", 3);
+        myfile1.writeFile(p1);
+        myfile1.writeFile(p2);
+        myfile1.writeFile(p3);
+        Person[] PersonList = new Person[arraylength1];
+        myfile1.readFile(PersonList);
+        for (Person person : PersonList) {
+            if(person != null) {
+                person.display();
+            }
+            else {
+                break;
             }
         }
 
-//        for (int i = 0; i < 5; i++) {
-//            if (sid. compareTo(elec_file.electivecourses[i].getSid()) == 0) {
-//                for (int j = 0; j < 5; j++) {
-//                    if (elec_file.electivecourses[i].getClassid().compareTo(schedule_file.schedules[j].getClassid()) == 0) {
-//                        for (int k = 0; k < 5; k++) {
-//                            if (schedule_file.schedules[j].getTid().compareTo(teachers_file.teachers[k].getTid()) == 0) {
-//                                System.out.println("teacher's name is " + teachers_file.teachers[k].getName());
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        System.out.println("If no information found, please check sid you input.");
-    }
+        int arraylength2 = 3;
+        MyFile myfile2 = new MyFile("student.data");
+        Student s1 = new Student("sid1", "stu1","male", 1,"major1");
+        Student s2 = new Student("sid2","stu2", "female", 2,"mmajor2");
+        Student s3 = new Student("sid3","stu3", "universal", 3,"major3");
+        myfile2.writeFile(s1);
+        myfile2.writeFile(s2);
+        myfile2.writeFile(s3);
+        Student[] StudentList = new Student[arraylength2];
+        myfile2.readFile(StudentList);
+        for (Student student : StudentList) {
+            if(student != null) {
+                student.display();
+            }
+            else {
+                break;
+            }
+        }
 
-    private static void WritePerson(MyFile myfile) throws IOException {
+        int arraylength3 = 3;
+        MyFile myfile3 = new MyFile("teacher.data");
+        Teacher t1 = new Teacher("tid1","teacher1", "male", 1,"title1");
+        Teacher t2 = new Teacher("tid2","teacher2", "female", 2,"titlle2");
+        Teacher t3 = new Teacher("tid3","teacher3", "universal", 3,"tttle3");
+        myfile3.writeFile(t1);
+        myfile3.writeFile(t2);
+        myfile3.writeFile(t3);
+        Teacher[] TeacherList = new Teacher[arraylength3];
+        myfile3.readFile(TeacherList);
+        for (Teacher teacher : TeacherList) {
+            if(teacher != null) {
+                teacher.display();
+            }
+            else {
+                break;
+            }
+        }
 
-        String s = "";
-        String name;
-        String sex;
-        int age;
-        for (int j = 0; j < myfile.people.length; j++)
-            myfile.people[j] = new Person(null, null, 0);
-        System.out.println("please enter the " + length + " person's information, press F to quit");
-        length++;
-        int i = 0;
-        while (s.compareTo("Y") != 0 && s.compareTo("y") != 0) {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("please enter name: ");
-            name = bufferedReader.readLine();
-            myfile.people[i].setName(name);
+        int arraylength4 = 3;
+        MyFile myfile4 = new MyFile("course.data");
+        Course c1 = new Course("cid1", "cname1", 1);
+        Course c2 = new Course("cid2", "cnama2", 2);
+        Course c3 = new Course("cid3", "cname3", 3);
+        myfile4.writeFile(c1);
+        myfile4.writeFile(c2);
+        myfile4.writeFile(c3);
+        Course[] CourseList = new Course[arraylength4];
+        myfile4.readFile(CourseList);
+        for (Course course : CourseList) {
+            if(course != null) {
+                course.display();
+            }
+            else {
+                break;
+            }
+        }
 
-            System.out.println("please enter sex: ");
-            sex = bufferedReader.readLine();
-            myfile.people[i].setSex(sex);
+        int arraylength5 = 3;
+        MyFile myfile5 = new MyFile("schedule.data");
+        Schedule sc1 = new Schedule("classid1", "cid1", "11","classroom1");
+        Schedule sc2 = new Schedule("classid2", "cid2", "22","classroom2");
+        Schedule sc3 = new Schedule("classid3", "cid3", "33","classroom3");
+        myfile5.writeFile(sc1);
+        myfile5.writeFile(sc2);
+        myfile5.writeFile(sc3);
+        Schedule[] ScheduleList = new Schedule[arraylength5];
+        myfile5.readFile(ScheduleList);
+        for (Schedule schedule : ScheduleList) {
+            if(schedule != null) {
+                schedule.display();
+            }
+            else {
+                break;
+            }
+        }
 
-            System.out.println("please enter age: ");
-            age = Integer.parseInt(bufferedReader.readLine());
-            myfile.people[i].setAge(age);
-
-            System.out.println("Do you want to exit?  Y/N");
-            s = bufferedReader.readLine();
-
-            myfile.WriteFile(myfile.people[i]);
-            i++;
+        int arraylength6 = 3;
+        MyFile myfile6 = new MyFile("electivecourse.data");
+        Electivecourse e1 = new Electivecourse("elid1", "sid1", "classid1");
+        Electivecourse e2 = new Electivecourse("elid2", "sid2", "classid2");
+        Electivecourse e3 = new Electivecourse("elid3", "sid3", "classid3");
+        myfile6.writeFile(e1);
+        myfile6.writeFile(e2);
+        myfile6.writeFile(e3);
+        Electivecourse[] ElectivecourseList = new Electivecourse[arraylength6];
+        myfile6.readFile(ElectivecourseList);
+        for (Electivecourse electivecourse : ElectivecourseList) {
+            if(electivecourse != null) {
+                electivecourse.display();
+            }
+            else {
+                break;
+            }
         }
     }
-
-    private static void WriteStudent(MyFile myfile) throws IOException {
-        String s = "";
-        String name;
-        String sex;
-        String sid;
-        String major;
-        int age;
-        for (int j = 0; j < myfile.students.length; j++)
-            myfile.students[j] = new Student();
-        length = 1;
-        System.out.println("Please enter the " + length + " student's information.");
-        length++;
-        int i = 0;
-        while (s.compareTo("Y") != 0 && s.compareTo("y") != 0) {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("please enter name: ");
-            name = bufferedReader.readLine();
-            myfile.students[i].setName(name);
-
-            System.out.println("please enter sex: ");
-            sex = bufferedReader.readLine();
-            myfile.students[i].setSex(sex);
-
-            System.out.println("please enter age: ");
-            age = Integer.parseInt(bufferedReader.readLine());
-            myfile.students[i].setAge(age);
-
-            System.out.println("please enter sid: ");
-            sid = bufferedReader.readLine();
-            myfile.students[i].setSid(sid);
-
-            System.out.println("please enter major: ");
-            major = bufferedReader.readLine();
-            myfile.students[i].setMajor(major);
-
-            System.out.println("Do you want to exit?  Y/N");
-            s = bufferedReader.readLine();
-
-            myfile.WriteFile(myfile.students[i]);
-            i++;
-        }
-    }
-
-    private static void WriteTeachers(MyFile myfile) throws IOException {
-        String s = "";
-        String name;
-        String sex;
-        String tid;
-        String title;
-        int age;
-        for (int j = 0; j < myfile.teachers.length; j++)
-            myfile.teachers[j] = new Teacher();
-        length = 1;
-        System.out.println("please enter the " + length + " teacher's information.");
-        length++;
-        int i = 0;
-        while (s.compareTo("Y") != 0 && s.compareTo("y") != 0) {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("please enter name: ");
-            name = bufferedReader.readLine();
-            myfile.teachers[i].setName(name);
-
-            System.out.println("please enter sex: ");
-            sex = bufferedReader.readLine();
-            myfile.teachers[i].setSex(sex);
-
-            System.out.println("please enter age: ");
-            age = Integer.parseInt(bufferedReader.readLine());
-            myfile.teachers[i].setAge(age);
-
-            System.out.println("please enter tid: ");
-            tid = bufferedReader.readLine();
-            myfile.teachers[i].setTid(tid);
-
-            System.out.println("please enter title: ");
-            title = bufferedReader.readLine();
-            myfile.teachers[i].setTitle(title);
-
-            System.out.println("Do you want to exit?  Y/N");
-            s = bufferedReader.readLine();
-
-            myfile.WriteFile(myfile.teachers[i]);
-            i++;
-        }
-    }
-
-    private static void WriteCourses(MyFile myfile) throws IOException {
-        String s = "";
-        String cname;
-        String cid;
-        int chour;
-        for (int j = 0; j < myfile.teachers.length; j++)
-            myfile.courses[j] = new Course(null, null, 0);
-        length = 1;
-        System.out.println("please enter the " + length + " course's information.");
-        length++;
-        int i = 0;
-        while (s.compareTo("Y") != 0 && s.compareTo("y") != 0) {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("please enter course name: ");
-            cname = bufferedReader.readLine();
-            myfile.courses[i].setCname(cname);
-
-            System.out.println("please enter course id: ");
-            cid = bufferedReader.readLine();
-            myfile.courses[i].setCid(cid);
-
-            System.out.println("please enter course hour: ");
-            chour = Integer.parseInt(bufferedReader.readLine());
-            myfile.courses[i].setChour(chour);
-
-            System.out.println("Do you want to exit?  Y/N");
-            s = bufferedReader.readLine();
-
-            myfile.WriteFile(myfile.courses[i]);
-            i++;
-        }
-    }
-
-    private static void WriteSchedlue(MyFile myfile) throws IOException {
-        String s = "";
-        String classid;
-        String cid;
-        String tid;
-        String classroom;
-        for (int j = 0; j < myfile.schedules.length; j++)
-            myfile.schedules[j] = new Schedule(null, null, null, null);
-        length = 1;
-        System.out.println("please enter the " + length + " Schedule's information.");
-        length++;
-        int i = 0;
-        while (s.compareTo("Y") != 0 && s.compareTo("y") != 0) {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("please enter class id: ");
-            classid = bufferedReader.readLine();
-            myfile.schedules[i].setClassid(classid);
-
-            System.out.println("please enter course id: ");
-            cid = bufferedReader.readLine();
-            myfile.schedules[i].setCid(cid);
-
-            System.out.println("please enter teacher's id: ");
-            tid = bufferedReader.readLine();
-            myfile.schedules[i].setTid(tid);
-
-            System.out.println("please enter classroom: ");
-            classroom = bufferedReader.readLine();
-            myfile.schedules[i].setClassroom(classroom);
-
-            System.out.println("Do you want to exit?  Y/N");
-            s = bufferedReader.readLine();
-
-            myfile.WriteFile(myfile.schedules[i]);
-            i++;
-        }
-    }
-
-    private static void WriteElec(MyFile myfile) throws IOException {
-        String s = "";
-        String elid;
-        String sid;
-        String classid;
-        for (int j = 0; j < myfile.electivecourses.length; j++)
-            myfile.electivecourses[j] = new Electivecourse(null, null, null);
-        length = 1;
-        System.out.println("please enter the " + length + " elective course's information.");
-        length++;
-        int i = 0;
-        while (s.compareTo("Y") != 0 && s.compareTo("y") != 0) {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("please enter elective course id: ");
-            elid = bufferedReader.readLine();
-            myfile.electivecourses[i].setElid(elid);
-
-            System.out.println("please enter sid: ");
-            sid = bufferedReader.readLine();
-            myfile.electivecourses[i].setSid(sid);
-
-            System.out.println("please enter class id: ");
-            classid = bufferedReader.readLine();
-            myfile.electivecourses[i].setClassid(classid);
-
-            System.out.println("Do you want to exit?  Y/N");
-            s = bufferedReader.readLine();
-
-            myfile.WriteFile(myfile.electivecourses[i]);
-            i++;
-        }
-    }
-
 }
