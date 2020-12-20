@@ -22,16 +22,12 @@ public class Main extends Application {
             fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
-            //           scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
             primaryStage.setTitle("My Application");
-//            primaryStage.initStyle(StageStyle.UNIFIED);
+
             primaryStage.show();
-            //           Controller controller = fxmlLoader.getController();
+
             primaryStage.setScene(scene);
-
-            //          controller.setStudent();
-
-
 
         } catch(Exception e) {
             e.printStackTrace();

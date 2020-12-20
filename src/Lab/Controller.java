@@ -3,13 +3,13 @@ package Lab;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import java.util.*;
-import java.io.*;
-import java.net.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller extends CLIMain implements Initializable {
+public class Controller extends CLIMain {
     public TextField stu_name;
     public TextField stu_sex;
     public TextField stu_age;
@@ -35,22 +35,34 @@ public class Controller extends CLIMain implements Initializable {
     public TextField ele_sid;
     public TextField ele_classid;
     public Button ele_continue;
+    @FXML
     public TableColumn<TableContent, String> cname_column;
+    @FXML
     public TableColumn<TableContent, String> tname_column;
+    @FXML
     public TableColumn<TableContent, String> classroom_column;
+    @FXML
     public TextField find_sid_1;
+    @FXML
     public Button check_button_1;
-    public TableView table;
+    @FXML
+    private TableView<TableContent> table;
 
-    String judge = new String();
     int i = 0;
     final ObservableList<TableContent> data = FXCollections.observableArrayList();
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
+        assert table != null : "fx:id=\"table\" was not injected: check your FXML file 'View.fxml'.";
+        assert cname_column != null : "fx:id=\"cname_column\" was not injected: check your FXML file 'View.fxml'.";
+        assert tname_column != null : "fx:id=\"tname_column\" was not injected: check your FXML file 'View.fxml'.";
+        assert classroom_column != null : "fx:id=\"classroom_column\" was not injected: check your FXML file 'View.fxml'.";
+        assert check_button_1 != null : "fx:id=\"submit\" was not injected: check your FXML file 'GUIView.fxml'.";
+
         cname_column.setCellValueFactory(cellData -> cellData.getValue().CourseNameProperty());
         tname_column.setCellValueFactory(cellData -> cellData.getValue().TeacherNameProperty());
         classroom_column.setCellValueFactory(cellData -> cellData.getValue().ClassroomProperty());
         table.setItems(data);
+        table.getColumns().addAll(cname_column,tname_column,classroom_column);
     }
 
     public Controller() throws Exception {
@@ -131,7 +143,7 @@ public class Controller extends CLIMain implements Initializable {
     }
 
     public void setCou_continue(ActionEvent actionEvent) throws Exception {
-        String guidata = setCou_cname() + ',' + setCou_cid() + ',' + setCou_chour();
+        String guidata = setCou_cid() + ',' + setCou_cname() + ',' + setCou_chour();
         write5Files(3, guidata);
         read5Files();
         cou_cname.clear();
@@ -156,12 +168,12 @@ public class Controller extends CLIMain implements Initializable {
     }
 
     public void setSch_continue(ActionEvent actionEvent) throws Exception {
-        String guidata = setSch_cid() + ',' + setSch_classid() + ',' + setSch_classroom() + ',' + setSch_tid();
+        String guidata = setSch_classid() + ',' + setSch_cid() + ',' + setSch_tid() + ',' + setSch_classroom();
         write5Files(4, guidata);
         read5Files();
         sch_cid.clear();
         sch_classid.clear();
-        sch_classid.clear();
+        sch_tid.clear();
         sch_classroom.clear();
     }
 
@@ -178,7 +190,7 @@ public class Controller extends CLIMain implements Initializable {
     }
 
     public void setEle_continue(ActionEvent actionEvent) throws Exception {
-        String guidata = setEle_elid() + ',' + setEle_classid() + ',' + setEle_sid();
+        String guidata = setEle_elid() + ',' + setEle_sid() + ',' + setEle_classid();
         write5Files(5, guidata);
         read5Files();
         ele_elid.clear();
@@ -190,8 +202,5 @@ public class Controller extends CLIMain implements Initializable {
         table.getItems().clear();
         String text = find_sid_1.getText();
         SearchInfoBySid(text, data);
-    }
-
-    public void check(ActionEvent actionEvent) {
     }
 }
