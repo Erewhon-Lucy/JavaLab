@@ -1,3 +1,7 @@
+/**
+ * 简单测试 Course类
+ */
+
 package Lab;
 
 public class TestCourse {

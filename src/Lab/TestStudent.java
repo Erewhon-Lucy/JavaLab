@@ -1,3 +1,7 @@
+/**
+ * 简单测试 Student类
+ */
+
 package Lab;
 
 public class TestStudent {

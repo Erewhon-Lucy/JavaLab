@@ -8,8 +8,6 @@ import java.io.*;
 
 public class MyFile {
 
-    private static final long serialVersionUID = 1L;
-
     private File opfile;
 
     public File getOpFile() {
@@ -18,11 +16,9 @@ public class MyFile {
 
     public MyFile(String FileName) throws IOException {
         this.opfile = new File(FileName);
-        //如果文件不存在则创建
         if (!opfile.exists()) {
-            opfile.createNewFile();
+            opfile.createNewFile();//若文件不存在，则新建
         }
-        //文件不可读
         if (!opfile.canRead()) {
             System.out.println("file can't be read.");
         }

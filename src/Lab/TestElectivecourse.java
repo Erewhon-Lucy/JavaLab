@@ -1,3 +1,7 @@
+/**
+ * 简单测试 ElectiveCourse类
+ */
+
 package Lab;
 
 public class TestElectivecourse {

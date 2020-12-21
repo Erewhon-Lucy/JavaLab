@@ -9,10 +9,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 public class Controller extends CLIMain {
+    /**
+     * 声明 view.fxml中的标签
+     */
     public TextField stu_name;
     public TextField stu_sex;
     public TextField stu_age;
@@ -52,6 +54,12 @@ public class Controller extends CLIMain {
     private TableView<TableContent> table;
 
     int i = 0;
+
+    /**
+     * 存储表格数据
+     * 配合TableContent使用
+     * 使得当datamodel中的属性值发生更改时，表格能够自动更新
+     */
     final ObservableList<TableContent> data = FXCollections.observableArrayList();
 
     public void initialize() {
@@ -91,10 +99,14 @@ public class Controller extends CLIMain {
         return stu_major.getText();
     }
 
+    /**
+     * 点击commit按钮调用
+     * @throws Exception
+     */
     public void setStu_continue() throws Exception {
         String guidata = setStu_sid() + "," + setStu_name() + "," + setStu_sex() + "," + setStu_age() + "," + setStu_major();
-        write5Files(1, guidata);
-        read5Files();
+        updateAllFiles(1, guidata);
+        readAllFiles();
         stu_name.clear();
         stu_sex.clear();
         stu_age.clear();
@@ -122,10 +134,15 @@ public class Controller extends CLIMain {
         return tea_title.getText();
     }
 
+    /**
+     * 点击commit按钮调用
+     * @param actionEvent
+     * @throws Exception
+     */
     public void setTea_continue(ActionEvent actionEvent) throws Exception {
         String guidata = setTea_tid() + ',' + setTea_name() + ',' + setTea_sex() + ',' + setTea_age() + ',' + setTea_title();
-        write5Files(2, guidata);
-        read5Files();
+        updateAllFiles(2, guidata);
+        readAllFiles();
         tea_name.clear();
         tea_age.clear();
         tea_sex.clear();
@@ -145,10 +162,15 @@ public class Controller extends CLIMain {
         return Integer.parseInt(cou_chour.getText());
     }
 
+    /**
+     * 点击commit按钮调用
+     * @param actionEvent
+     * @throws Exception
+     */
     public void setCou_continue(ActionEvent actionEvent) throws Exception {
         String guidata = setCou_cid() + ',' + setCou_cname() + ',' + setCou_chour();
-        write5Files(3, guidata);
-        read5Files();
+        updateAllFiles(3, guidata);
+        readAllFiles();
         cou_cname.clear();
         cou_cid.clear();
         cou_chour.clear();
@@ -170,10 +192,15 @@ public class Controller extends CLIMain {
         return sch_tid.getText();
     }
 
+    /**
+     * 点击commit按钮调用
+     * @param actionEvent
+     * @throws Exception
+     */
     public void setSch_continue(ActionEvent actionEvent) throws Exception {
         String guidata = setSch_classid() + ',' + setSch_cid() + ',' + setSch_tid() + ',' + setSch_classroom();
-        write5Files(4, guidata);
-        read5Files();
+        updateAllFiles(4, guidata);
+        readAllFiles();
         sch_cid.clear();
         sch_classid.clear();
         sch_tid.clear();
@@ -192,15 +219,24 @@ public class Controller extends CLIMain {
         return ele_sid.getText();
     }
 
+    /**
+     * 点击commit按钮调用
+     * @param actionEvent
+     * @throws Exception
+     */
     public void setEle_continue(ActionEvent actionEvent) throws Exception {
         String guidata = setEle_elid() + ',' + setEle_sid() + ',' + setEle_classid();
-        write5Files(5, guidata);
-        read5Files();
+        updateAllFiles(5, guidata);
+        readAllFiles();
         ele_elid.clear();
         ele_classid.clear();
         ele_sid.clear();
     }
 
+    /**
+     * 点击Search按钮调用
+     * @param actionEvent
+     */
     public void check_1(ActionEvent actionEvent) {
         table.getItems().clear();
         String text = find_sid_1.getText();

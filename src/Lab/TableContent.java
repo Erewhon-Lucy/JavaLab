@@ -1,5 +1,7 @@
 /**
- * 在 TableView 会用到
+ * 表格内容类，为了填充表格内容而创建
+ * 为了填充 TableView,必须格式化字符串到 SimpleStringProperty
+ * 配合 Controller中的 ObservableLists使用
  */
 
 package Lab;

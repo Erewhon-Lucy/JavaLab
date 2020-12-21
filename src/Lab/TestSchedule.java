@@ -1,3 +1,7 @@
+/**
+ * 简单测试Schedule类
+ */
+
 package Lab;
 
 public class TestSchedule {

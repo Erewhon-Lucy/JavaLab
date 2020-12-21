@@ -1,6 +1,5 @@
 /**
- * 1.若在命令行展示读写文件操作，则直接运行即可
- * 2.若要用GUI演示，则必须打开此文件
+ * 一些必要操作
  */
 
 package Lab;
@@ -26,7 +25,14 @@ public class CLIMain {
     public CLIMain() throws Exception {
     }
 
-    public void write5Files(int guidatatype, String guidata) throws Exception {
+    /**
+     * 更新所有文件
+     * 提示弹窗
+     * @param guidatatype
+     * @param guidata
+     * @throws Exception
+     */
+    public void updateAllFiles(int guidatatype, String guidata) throws Exception {
         try {
             String p1 = null, p2 = null, p3 = null, p4 = null;
             int i1 = -1;
@@ -87,18 +93,22 @@ public class CLIMain {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Successfully");
             alert.setHeaderText(null);
-            alert.setContentText("Wrote 5 files success!");
+            alert.setContentText("The relevant files has been updated.");
             alert.show();
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setHeaderText(null);
-            alert.setContentText("Writing Files Failed!");
+            alert.setContentText("Error writing files.");
             alert.show();
         }
     }
 
-    public void read5Files() throws Exception {
+    /**
+     * 阅读所有文件，提示弹窗
+     * @throws Exception
+     */
+    public void readAllFiles() throws Exception {
         int arraylength = 100;
 
         try {
@@ -121,7 +131,7 @@ public class CLIMain {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText(null);
-                alert.setContentText("Read 5 files success!");
+                alert.setContentText("The relevant files has been read.");
                 alert.show();
             }else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -135,11 +145,16 @@ public class CLIMain {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setHeaderText(null);
-            alert.setContentText("Reading Files Failed!");
+            alert.setContentText("Error reading files.");
             alert.show();
         }
     }
 
+    /**
+     * 根据sid寻找学生所选的所有课程及其相关信息
+     * @param sid
+     * @param data
+     */
     public void SearchInfoBySid(String sid, ObservableList<TableContent> data) {
         Electivecourse[] ElectRecord = new Electivecourse[100];
         Schedule[] ScheRecord = new Schedule[100];
@@ -250,9 +265,9 @@ public class CLIMain {
             System.out.println("");
             switch (choice) {
                 case 1:
-                    climain.write5Files(0, null);break;
+                    climain.updateAllFiles(0, null);break;
                 case 2:
-                    climain.read5Files();continue;
+                    climain.readAllFiles();continue;
                 case 3:
                     if(climain.StudentList != null && climain.TeacherList != null && climain.CourseList != null
                             && climain.ScheduleList != null && climain.ElectivecourseList != null) {

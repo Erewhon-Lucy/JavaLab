@@ -1,3 +1,9 @@
+/**
+ * 测试Person类,
+ * 同时尝试文件和对象数组的操作（仅为了学习、巩固并加深理解），
+ * 在其他类的测试中没有使用文件操作。
+ */
+
 package Lab;
 
 import java.io.BufferedReader;

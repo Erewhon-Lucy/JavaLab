@@ -1,3 +1,7 @@
+/**
+ * 简单测试Teacher类
+ */
+
 package Lab;
 
 public class TestTeacher {

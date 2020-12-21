@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lab.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lab.Controller">
 
     <children>
         <TabPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: B0C4DE;" tabClosingPolicy="UNAVAILABLE">
@@ -32,7 +31,7 @@
                            <effect>
                               <DropShadow color="#000000bf" />
                            </effect></Text>
-                                <Button fx:id="stu_continue" layoutX="262.0" layoutY="289.0" mnemonicParsing="false" onAction="#setStu_continue" text="confirm" textFill="#054ea7" AnchorPane.bottomAnchor="43.0" AnchorPane.topAnchor="289.0">
+                                <Button fx:id="stu_continue" layoutX="262.0" layoutY="289.0" mnemonicParsing="false" onAction="#setStu_continue" text="confirm" textFill="#054ea7" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="262.8" AnchorPane.topAnchor="289.0">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
@@ -66,7 +65,7 @@
                            <effect>
                               <DropShadow color="#000000bf" />
                            </effect></Text>
-                                <Button fx:id="tea_continue" layoutX="262.0" layoutY="289.0" mnemonicParsing="false" onAction="#setTea_continue" style="-fx-border-radius: 2em;" text="confirm" textFill="#054ea7" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="262.8" AnchorPane.topAnchor="289.0">
+                                <Button fx:id="tea_continue" layoutX="262.0" layoutY="290.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#setTea_continue" style="-fx-border-radius: 2em;" text="confirm" textFill="#054ea7" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="262.8" AnchorPane.topAnchor="289.0">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
@@ -180,11 +179,11 @@
                            </effect>
                                 </TableView>
                                 <Text layoutX="88.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student id to search" />
-                                <TextField fx:id="find_sid_1" layoutX="252.0" layoutY="21.0" prefHeight="30.0" prefWidth="174.0" promptText="sid">
+                                <TextField fx:id="find_sid_1" layoutX="242.0" layoutY="22.0" prefHeight="30.0" prefWidth="174.0" promptText="sid">
                            <effect>
                               <InnerShadow color="#2a52db" />
                            </effect></TextField>
-                                <Button fx:id="check_button_1" layoutX="443.0" layoutY="21.0" mnemonicParsing="false" onAction="#check_1" text="Search" textFill="#054ea7">
+                                <Button fx:id="check_button_1" layoutX="443.0" layoutY="26.0" mnemonicParsing="false" onAction="#check_1" text="Search" textFill="#054ea7">
                            <effect>
                               <DropShadow />
                            </effect></Button>

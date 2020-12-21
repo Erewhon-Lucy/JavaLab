@@ -104,7 +104,7 @@ public class TestMyFile {
         int arraylength6 = 3;
         MyFile myfile6 = new MyFile("electivecourse.txt");
         Electivecourse e1 = new Electivecourse("elid1", "sid1", "classid1");
-        Electivecourse e2 = new Electivecourse("elid2", "sid2", "classid2");
+        Electivecourse e2 = new Electivecourse("elid2", "sid1", "classid2");
         Electivecourse e3 = new Electivecourse("elid3", "sid3", "classid3");
         myfile6.writeFile(e1);
         myfile6.writeFile(e2);
