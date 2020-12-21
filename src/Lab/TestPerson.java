@@ -1,97 +1,31 @@
 /**
- * 测试Person类,
- * 同时尝试文件和对象数组的操作（仅为了学习、巩固并加深理解），
- * 在其他类的测试中没有使用文件操作。
+ * 测试Person类
  */
 
 package Lab;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-
 public class TestPerson {
     public static void main(String[] args) {
-        String inputFile = "exp\\People.txt";
-        ReadFile.ReadName(inputFile);
-        ReadFile.ReadSex(inputFile);
-        ReadFile.ReadAge(inputFile);
-        Person[] p = new Person[5];
+        Person[] people = new Person[5];
 
-        for (int i = 0; i < ReadFile.NameArray.length; i++) {
-            p[i] = new Person(ReadFile.NameArray[i], ReadFile.SexArray[i], ReadFile.AgeArray[i]);
-            p[i].display();
-        }
-        System.out.println("Now test method: ");
-        p[3].setName("Lucy");
-        p[3].setSex("F");
-        p[3].setAge(19);
-        p[3].display();
-    }
-}
+        Person person0 = new Person("Name01", "m", 21);
+        Person person1 = new Person("Name02", "f", 22);
+        Person person2 = new Person("Name03", "m", 23);
+        Person person3 = new Person();
+        Person person4 = new Person();
 
-class ReadFile {
-    static String[] NameArray = new String[5];
-    static String[] SexArray = new String[5];
-    static int[] AgeArray = new int[5];
+        people[0] = person0;
+        people[1] = person1;
+        people[2] = person2;
+        people[3] = person3;
+        people[4] = person4;
 
-    static void ReadName(String filename) {
-        File file = new File(filename);
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String tempString = null;
-            int i = 0;
-            while ((tempString = reader.readLine()) != null) {
-                if (tempString.contains("name")) {
-                    String str = tempString;
-                    str = str.replaceAll("name=", "");
-                    NameArray[i] = str;
-                    i++;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+        people[3].setName("Name04");
+        people[3].setSex("f");
+        people[3].setAge(17);
 
-    static void ReadSex(String filename) {
-        File file = new File(filename);
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String tempString = null;
-            int i = 0;
-            while ((tempString = reader.readLine()) != null) {
-                if (tempString.contains("sex")) {
-                    String str = tempString;
-                    str = str.replaceAll("sex=", "");
-                    SexArray[i] = str;
-                    i++;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    static void ReadAge(String filename) {
-        File file = new File(filename);
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String tempString = null;
-            int i = 0;
-            while ((tempString = reader.readLine()) != null) {
-                if (tempString.contains("age")) {
-                    String str = tempString;
-                    str = str.replaceAll("age=", "");
-                    AgeArray[i] = Integer.parseInt(str);
-                    i++;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
+        for (int i = 0; i < people.length; i++) {
+            people[i].display();
         }
     }
 }
